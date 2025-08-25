@@ -1,10 +1,10 @@
 <?php
 session_start();
-$usersFile='users.json';
-if(!file_exists($usersFile)){
-    $default=['admin'=>password_hash('1234',PASSWORD_DEFAULT),'certified'=>password_hash('abcd',PASSWORD_DEFAULT)];
-    file_put_contents($usersFile,json_encode($default));
-}
+$usersFile = 'users.json';
+$users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+
+// Redirect to installer if no admin
+if(!isset($users['admin'])){ header("Location: install.php"); exit(); }
 $users=json_decode(file_get_contents($usersFile),true);
 $msg='';
 if(isset($_POST['username'],$_POST['password'])){
