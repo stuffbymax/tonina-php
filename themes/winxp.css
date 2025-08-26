@@ -1,0 +1,46 @@
+/* Windows XP Theme */
+body{background-color:#3A6EA5;color:#000;font-family:'Tahoma',sans-serif;font-size:11px;margin:0;line-height:1.5}
+.container{max-width:1200px;margin:8px;padding:0}
+header h1{font-size:16px;font-weight:bold;margin:0}
+header{background:#fff;padding:10px;border-bottom:1px solid #000;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.login-container{max-width:400px;margin:50px auto;padding:2px;border:2px solid;border-color:#fff #6D6D6D #6D6D6D #fff}
+.login-container h2{background:linear-gradient(to right,#0A246A,#A6CAF0);color:#fff;padding:3px 5px;font-size:12px;font-weight:normal;margin:0}
+.login-container form{padding:1.5rem;background:#ECE9D8}
+.admin-section,.card{background:#ECE9D8;padding:2px;margin-bottom:8px;border:2px solid;border-color:#fff #6D6D6D #6D6D6D #fff}
+h2,h3{background:linear-gradient(to right,#0A246A,#A6CAF0);color:#fff;padding:3px 5px;font-size:12px;font-weight:normal;margin:0}
+.admin-section > *, .card > * {padding:8px}
+.btn{background-color:#E1E1E1;border:1px solid #000;border-radius:0;box-shadow:1px 1px 0 #fff;padding:0.5rem 1.2rem;cursor:pointer;text-decoration:none;color:#000}
+.btn:active{border-style:inset}
+.btn-danger{background-color:#E1E1E1}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;margin-bottom:0.5rem}
+.form-group input,.form-group select{width:100%;padding:0.5rem;border:1px solid #7F9DB9;box-sizing:border-box}
+audio{width:100%;margin-top:0.5rem}
+.grid-container,.admin-grid{display:grid;gap:8px;padding:8px}
+.grid-container{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.admin-grid{grid-template-columns:repeat(auto-fit,minmax(350px,1fr))}
+.track-list,.item-list{list-style:none;padding:0;margin:0}
+.track-list li,.item-list li{display:flex;justify-content:space-between;align-items:center;padding:4px 0}
+footer{text-align:center;margin-top:2rem;padding:1rem;color:#fff}
+.error,.message,.success{padding:1rem;margin:0 0 1rem 0;border:1px solid #000}
+.error{background:#FFE0E0}
+.success,.message{background:#E0FFE0}
+.tabs{border-bottom:1px solid var(--border-color);margin-bottom:2rem}
+.tab-button{background:0 0;border:none;padding:1rem 0;margin-right:2rem;cursor:pointer;font-size:1.1rem;font-weight:700;color:var(--text-secondary);border-bottom:3px solid transparent;transition:color .2s ease,border-color .2s ease}
+.tab-button.active,.tab-button:hover{color:var(--text-primary)}
+.tab-button.active{border-bottom-color:var(--primary-color)}
+.item-list {
+    list-style: none; /* Removes the bullet points */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Replaces the old gap */
+    padding: 0; /* Removes default browser padding */
+}
+.item-list li {
+    display: flex;
+    justify-content: space-between; /* Pushes items to opposite ends */
+    align-items: center; /* Vertically centers them */
+    background: var(--bg-elevated);
+    padding: 0.75rem 1.25rem; /* Adjusted padding */
+    border-radius: var(--border-radius-md); /* Use medium radius */
+}

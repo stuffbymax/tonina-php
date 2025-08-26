@@ -1,36 +1,65 @@
 <?php
 session_start();
-if(!isset($_SESSION['user'])){header("Location:index.php");exit();}
-$cats=['Rock'=>['song1.mp3','song2.mp3'],'Pop'=>['song3.mp3','song4.mp3']];
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"><title>Music Player</title>
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<h2>Welcome, <?php echo $_SESSION['user'];?>!</h2>
-<audio id="player" controls></audio>
-<?php foreach($cats as $c=>$songs):?>
-<div class="category"><?php echo $c;?></div>
-<ul>
-<?php foreach($songs as $s):?>
-<li onclick="playSong('<?php echo $c.'/'.$s;?>',this)"><?php echo pathinfo($s,PATHINFO_FILENAME);?></li>
-<?php endforeach;?>
-</ul>
-<?php endforeach;?>
-<form action="logout.php" method="post"><button class="logout" type="submit">Logout</button></form>
-<script>
-let player=document.getElementById('player'),activeSong;
-function playSong(path,el){
-player.src='music/'+path;player.play();
-if(activeSong)activeSong.classList.remove('active');
-el.classList.add('active');activeSong=el;
+
+if (!isset($_SESSION['user'])) {
+    http_response_code(403);
+    exit('Forbidden: You must be logged in to access this content.');
 }
-</script>
-<?php if($_SESSION['user']=='admin'): ?>
-<p><a href="panel.php" style="color:#1DB954">Admin Panel</a></p>
-<?php endif; ?>
-</body>
-</html>
+
+// Ensure the config file exists before trying to include it.
+if (!file_exists('config.php')) {
+    http_response_code(500);
+    exit('Server Error: Configuration file is missing.');
+}
+$config = include('config.php');
+
+// --- Robust Path Construction ---
+// 1. Ensure the configured music folder has one, and only one, trailing slash.
+$music_folder = rtrim(trim($config['music_folder']), '/') . '/';
+
+// 2. Get the requested filename and use basename() to prevent any directory traversal attacks (e.g., ../../etc/passwd).
+$filename = basename($_GET['file']);
+
+// 3. Combine them to get the full, safe path to the audio file.
+$file_path = $music_folder . $filename;
+
+
+// --- File Streaming Logic ---
+if (file_exists($file_path) && is_readable($file_path)) {
+    // Determine the MIME type. The 'fileinfo' PHP extension is required for this to work reliably.
+    // If it's missing, the browser might not understand the content type.
+    $mime_type = function_exists('mime_content_type') ? mime_content_type($file_path) : 'audio/mpeg';
+    $file_size = filesize($file_path);
+
+    header('Content-Type: ' . $mime_type);
+    header('Content-Length: ' . $file_size);
+    header('Accept-Ranges: bytes');
+    header('Content-Disposition: inline; filename="' . $filename . '"');
+
+    // Handle HTTP Range requests for seeking/skipping in the audio player
+    $range = $_SERVER['HTTP_RANGE'] ?? null;
+    if ($range) {
+        list(, $range) = explode('=', $range, 2);
+        list($start, $end) = explode('-', $range);
+        $end = empty($end) ? $file_size - 1 : min($end, $file_size - 1);
+        $start = empty($start) || $end < $start ? 0 : (int)$start;
+
+        header('HTTP/1.1 206 Partial Content');
+        header("Content-Range: bytes $start-$end/$file_size");
+        $length = $end - $start + 1;
+        header("Content-Length: $length");
+
+        $file = fopen($file_path, 'rb');
+        fseek($file, $start);
+        echo fread($file, $length);
+        fclose($file);
+    } else {
+        // If no range is requested, stream the whole file.
+        readfile($file_path);
+    }
+    exit;
+} else {
+    // If the file doesn't exist or isn't readable, send a 404 Not Found error.
+    http_response_code(404);
+    exit('File not found or access denied.');
+}

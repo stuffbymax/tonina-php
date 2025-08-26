@@ -1,0 +1,11 @@
+# Deny access to sensitive JSON files
+<Files "*.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Deny access to the config file
+<Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
