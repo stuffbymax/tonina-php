@@ -65,8 +65,13 @@ php -S localhost:8000
 
 1. Mac/Linux: ifconfig or ip addr → look for inet under your active network (e.g., 192.168.1.95)
 
-2.```php
-php -S 192.168.1.95:8000```
+2. Local Network
+
+```php
+php -S 192.168.1.95:8000
+```
+<img width="366" height="53" alt="image" src="https://github.com/user-attachments/assets/594859b8-c961-4e42-b5b5-f80764345dee" />
+
 
 3. Access Tonina-PHP from another device Open a browser on another device in the same network and go to:
 4. http://192.168.1.95:8000
