@@ -73,6 +73,25 @@ php -S 192.168.1.95:8000```
 
 5. Firewall settings:
 Ensure incoming connections on the port (default 8000) are allowed.
+---
+
+## extra
+
+## how to pronaunce `Tonina`
+
+- T → like English “t”
+
+- o → like English “o” in “pot”
+
+- n → like English “n”
+
+- i → like English “ee” in “see”
+
+- n → like English “n”
+
+- a → like English “a” in “father”
+
+- “Toh-nee-nah”
 
 
 
