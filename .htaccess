@@ -1,11 +1,20 @@
-# Deny access to sensitive JSON files
-<Files "*.json">
-    Order Allow,Deny
-    Deny from all
-</Files>
+# appache server example
+# Set the custom 404 error page for the entire site
+ErrorDocument 400 /400.php
+ErrorDocument 401 /401.php
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+ErrorDocument 503 /503.php
 
-# Deny access to the config file
-<Files "config.php">
-    Order Allow,Deny
-    Deny from all
-</Files>
+# --- Comprehensive Security Rule ---
+# This single block protects all sensitive files (.json, config.php, etc.)
+# by only allowing direct access to specific public-facing PHP scripts.
+<FilesMatch "\.(json|php)$">
+    <If "-f %{REQUEST_FILENAME} && %{REQUEST_URI} !~ m#/(index|install|logout|panel|panel_admin|player|playlist|404|400|401|403|500|503)\.php$#">
+        Order Allow,Deny
+        Deny from all
+    </If>
+</FilesMatch>
+
+  

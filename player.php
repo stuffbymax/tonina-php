@@ -59,7 +59,7 @@ if (file_exists($file_path) && is_readable($file_path)) {
     }
     exit;
 } else {
-    // If the file doesn't exist or isn't readable, send a 404 Not Found error.
-    http_response_code(404);
-    exit('File not found or access denied.');
+    // The requested file was not found, so display our custom 404 page.
+    include '404.php';
+    exit;
 }
