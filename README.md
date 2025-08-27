@@ -51,11 +51,12 @@ url.rewrite = (
 )
 ```
 
-# PHP Built-in Server (Local Testing)
+# PHP Built-in Server (Local Testing) and Running on a Local Network
 
+### local
 - No .htaccess needed. Start the server with:
 ```php
-php -S 0.0.0.0:8000
+php -S localhost:8000
 ```
 
 ## Find your local IP address:
@@ -64,8 +65,14 @@ php -S 0.0.0.0:8000
 
 1. Mac/Linux: ifconfig or ip addr → look for inet under your active network (e.g., 192.168.1.95)
 
-2. Access Tonina-PHP from another device Open a browser on another device in the same network and go to:
-3. http://192.168.1.95:8000
+2.```php
+php -S 192.168.1.95:8000```
+
+3. Access Tonina-PHP from another device Open a browser on another device in the same network and go to:
+4. http://192.168.1.95:8000
+
+5. Firewall settings:
+Ensure incoming connections on the port (default 8000) are allowed.
 
 
 
