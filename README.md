@@ -18,6 +18,15 @@ You can try the demo [here](https://stuffbymax-playground.free.nf/):
 
 ---
 
+# Important Notice
+
+**Tonina-PHP** is a self-hosted music player. The software itself does not provide any music. Users are responsible for the content they upload or stream.
+
+# Demo Content
+
+Tonina-PHP comes with a few sample tracks that are legally owned by the project author stuffbymax. You can use these samples to try out all features of the player right away.
+
+---
 # Installation Guide
 
 1. Upload Tonina-PHP to your server.
