@@ -5,6 +5,7 @@ http_response_code(403);
 // Attempt to load the configuration to get the current theme.
 // If config doesn't exist (e.g., accessed before installation), default to a safe theme.
 $config = file_exists('config.php') ? include('config.php') : ['theme' => 'light.css'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

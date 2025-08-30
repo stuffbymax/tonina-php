@@ -3,7 +3,7 @@ session_start();
 
 // --- Security and Setup ---
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    include '403.php'; // Or header('Location: index.php');
+    include 'index.php'; // Or header('Location: index.php');
     exit;
 }
 
