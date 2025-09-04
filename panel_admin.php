@@ -268,7 +268,7 @@ $music_files = glob($glob_pattern, GLOB_BRACE);
         </section>
     </div>
 </div>
-<footer>Made with PHP</footer>
+<footer>&copy; 2025 MartinP MIT. Made with PHP</footer>
 <style>.edit-form { border-top: 1px solid #333; padding-top: 1.5rem; margin-top: 1.5rem; }</style>
 <script>
     function openTab(evt, tabName) {

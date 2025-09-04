@@ -57,6 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
-    <footer>Made with PHP</footer>
+    <footer>&copy; 2025 MartinP MIT. Made with PHP</footer>
 </body>
 </html>

@@ -27,6 +27,6 @@ $config = file_exists('config.php') ? include('config.php') : ['theme' => 'light
         </div>
     </div>
 </div>
-<footer>Made with PHP</footer>
+<footer>&copy; 2025 MartinP MIT. Made with PHP</footer>
 </body>
 </html>
