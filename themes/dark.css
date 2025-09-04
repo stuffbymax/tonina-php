@@ -13,7 +13,26 @@ h1,h2,h3{color:#fff}
 .form-group{margin-bottom:1rem}
 .form-group label{display:block;margin-bottom:0.5rem}
 .form-group input,.form-group select{width:100%;padding:0.8rem;background-color:#333;border:1px solid #666;color:#f0f0f0;border-radius:4px;box-sizing:border-box}
-audio{width:100%;margin-top:0.5rem}
+audio {
+    width: 95%;                 /* slightly smaller for left alignment */
+    margin-top: 0.5rem;
+    margin-left: 0;
+    display: block;
+
+    background: #2c2c2c;       /* matches card background */
+    border: 2px solid #555;     /* subtle border */
+    border-radius: 6px;         /* slightly rounded corners */
+    padding: 4px;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.05),
+                1px 1px 3px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+audio:hover {
+    border-color: #777;
+    box-shadow: inset 1px 1px 3px rgba(255,255,255,0.1),
+                1px 1px 5px rgba(0,0,0,0.25);
+}
 .grid-container,.admin-grid{display:grid;gap:20px}
 .grid-container{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 .admin-grid{grid-template-columns:repeat(auto-fit,minmax(350px,1fr))}
