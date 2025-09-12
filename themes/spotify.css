@@ -55,6 +55,51 @@ audio:hover {
                 1px 1px 5px rgba(0,0,0,0.25);
 }
 
+/* Custom Audio Player for Chromium (Chrome, Edge) */
+audio::-webkit-media-controls-panel {
+    background-color: #181818;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button {
+    background-color: #1db954;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+audio::-webkit-media-controls-play-button:hover,
+audio::-webkit-media-controls-pause-button:hover {
+    background-color: #1ed760;
+    transform: scale(1.1);
+}
+
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider {
+    filter: invert(1) hue-rotate(180deg); /* makes icons white */
+}
+
+audio::-webkit-media-controls-timeline {
+    background-color: #282828;
+    border-radius: 4px;
+    height: 4px;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: #b3b3b3;
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+audio::-webkit-media-controls-seek-back-button,
+audio::-webkit-media-controls-seek-forward-button {
+    display: none; /* optional: hide skip buttons if you want a cleaner UI */
+}
+
+
 .message{padding:1rem;margin-bottom:1.5rem;border-radius:8px;color:#fff;font-weight:700}
 .message.success{background-color:#28a745}
 .message.error{background-color:#e22134}
