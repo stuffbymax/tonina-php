@@ -1,3 +1,5 @@
+# css and readme is made by ai
+
 # Log in info for the demo
 
 You can try the demo [here](https://stuffbymax-playground.free.nf/):
